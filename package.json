@@ -1,0 +1,23 @@
+{
+	"name": "scrapey",
+	"packageManager": "yarn@4.9.1",
+	"type": "module",
+	"scripts": {
+		"clean": "rimraf ./dist",
+		"build": "tsc && tsconfig-replace-paths",
+		"start": "node ./dist/index.js",
+		"dev": "yarn clean && yarn build && yarn start"
+	},
+	"dependencies": {
+		"typescript": "^5.8.3"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.24.0",
+		"@stylistic/eslint-plugin": "^4.2.0",
+		"eslint": "^9.24.0",
+		"globals": "^16.0.0",
+		"rimraf": "^6.0.1",
+		"tsconfig-replace-paths": "^0.0.14",
+		"typescript-eslint": "^8.29.1"
+	}
+}
