@@ -1,8 +1,7 @@
-import { load } from "cheerio";
-import { Square } from "./classes/data/Square.js";
+import { database } from "./database/index.js";
 
 void (async () => {
-	const mapArea = new Square(
+	/* const mapArea = new Square(
 		41.25001034180876, -8.623341057375654, // North-eastern corner
 		41.169255067342434, -8.701688589978033 // South-western corner
 	);
@@ -19,5 +18,7 @@ void (async () => {
 	if(!("data" in dataObject)) { return; }
 
 	const data = dataObject.data as object;
-	console.log(data);
+	console.log(data); */
+
+	await database.sync();
 })();
