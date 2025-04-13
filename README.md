@@ -1,2 +1,2 @@
 # scrapey
-Scraping project that attempts to retrieve information from websites using square magic.
+AirBnB Scraping project that attempts to retrieve listing information using square magic.
