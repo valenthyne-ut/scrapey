@@ -1,4 +1,5 @@
 import { database } from "./database/index.js";
+import { initModels } from "./database/models/index.js";
 
 void (async () => {
 	/* const mapArea = new Square(
@@ -20,5 +21,6 @@ void (async () => {
 	const data = dataObject.data as object;
 	console.log(data); */
 
+	initModels(database);
 	await database.sync();
 })();
