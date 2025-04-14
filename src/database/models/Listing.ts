@@ -1,11 +1,17 @@
 import { Association, CreationOptional, DataTypes, HasOneCreateAssociationMixin, HasOneGetAssociationMixin, HasOneSetAssociationMixin, InferAttributes, InferCreationAttributes, Model, NonAttribute, Sequelize } from "sequelize";
 import { ListingDetails } from "./ListingDetails.js";
+import { SurveyArea } from "./SurveyArea.js";
 
 class Listing extends Model<InferAttributes<Listing>, InferCreationAttributes<Listing>> {
 	declare id: CreationOptional<number>;
-	declare id_airbnb: string;
+	declare surveyAreaId: number;
+	declare airbnbId: string;
 	declare createdAt: CreationOptional<Date>;
 	declare updatedAt: CreationOptional<Date>;
+
+	declare surveyArea: NonAttribute<SurveyArea>;
+	declare getSurveyArea: HasOneGetAssociationMixin<SurveyArea>;
+	declare setSurveyArea: HasOneSetAssociationMixin<SurveyArea, number>;
 
 	declare listingDetails?: NonAttribute<ListingDetails>;
 	declare getListingDetails: HasOneGetAssociationMixin<ListingDetails>;
@@ -13,6 +19,7 @@ class Listing extends Model<InferAttributes<Listing>, InferCreationAttributes<Li
 	declare createListingDetails: HasOneCreateAssociationMixin<ListingDetails>;
 
 	declare static associations: {
+		surveyArea: Association<Listing, SurveyArea>;
 		listingDetails: Association<Listing, ListingDetails>;
 	};
 
@@ -23,7 +30,11 @@ class Listing extends Model<InferAttributes<Listing>, InferCreationAttributes<Li
 				primaryKey: true,
 				autoIncrement: true
 			},
-			id_airbnb: {
+			surveyAreaId: {
+				type: DataTypes.INTEGER,
+				allowNull: false
+			},
+			airbnbId: {
 				type: DataTypes.STRING(48),
 				allowNull: false
 			},

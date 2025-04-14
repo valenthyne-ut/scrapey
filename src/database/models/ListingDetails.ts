@@ -3,11 +3,10 @@ import { Listing } from "./Listing.js";
 
 class ListingDetails extends Model<InferAttributes<ListingDetails>, InferCreationAttributes<ListingDetails>> {
 	declare id: CreationOptional<number>;
-	declare listing_id: number;
-	declare latitude: { type: "Point"; coordinates: number[] };
-	declare longitude: { type: "Point"; coordinates: number[] };
-	declare accuracy_radius: number;
-	declare days_booked_in_year: number;
+	declare listingId: number;
+	declare point: { type: "Point"; coordinates: number[] };
+	declare accuracyRadius: number;
+	declare daysBookedInYear: number;
 	declare createdAt: CreationOptional<Date>;
 	declare updatedAt: CreationOptional<Date>;
 
@@ -27,23 +26,19 @@ class ListingDetails extends Model<InferAttributes<ListingDetails>, InferCreatio
 				primaryKey: true,
 				autoIncrement: true
 			},
-			listing_id: {
+			listingId: {
 				type: DataTypes.INTEGER,
 				allowNull: false
 			},
-			latitude: {
+			point: {
 				type: DataTypes.GEOMETRY,
 				allowNull: false
 			},
-			longitude: {
-				type: DataTypes.GEOMETRY,
-				allowNull: false
-			},
-			accuracy_radius: {
+			accuracyRadius: {
 				type: DataTypes.INTEGER,
 				allowNull: false
 			},
-			days_booked_in_year: {
+			daysBookedInYear: {
 				type: DataTypes.INTEGER,
 				allowNull: false
 			},
